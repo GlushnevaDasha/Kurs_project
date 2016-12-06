@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище BDModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Action">
+    <Key>
+      <PropertyRef Name="IDAction" />
+    </Key>
+    <Property Name="IDAction" Type="int" Nullable="false" />
+    <Property Name="NameAction" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Start_Date" Type="date" Nullable="false" />
+    <Property Name="Completion_Date" Type="date" Nullable="false" />
+    <Property Name="IDProduct" Type="int" Nullable="false" />
+    <Property Name="Discount" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="IDProduct" />
+    </Key>
+    <Property Name="IDProduct" Type="int" Nullable="false" />
+    <Property Name="NameProduct" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="IDRole" />
+    </Key>
+    <Property Name="IDRole" Type="int" Nullable="false" />
+    <Property Name="NameRole" Type="nchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="IDUser" />
+    </Key>
+    <Property Name="IDUser" Type="int" Nullable="false" />
+    <Property Name="IDRole" Type="int" Nullable="false" />
+    <Property Name="Surname" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="Passport_Data " Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Login" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="Password" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Action__IDProduc__173876EA">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Action" Type="Self.Action" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="IDProduct" />
+      </Principal>
+      <Dependent Role="Action">
+        <PropertyRef Name="IDProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User__IDRole__1273C1CD">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="IDRole" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IDRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище BDModelContainer">
+    <EntitySet Name="Action" EntityType="Self.Action" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Action__IDProduc__173876EA" Association="Self.FK__Action__IDProduc__173876EA">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Action" EntitySet="Action" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User__IDRole__1273C1CD" Association="Self.FK__User__IDRole__1273C1CD">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

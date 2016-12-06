@@ -1,0 +1,43 @@
+﻿@model kr_avt.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Product</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IDProduct)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IDProduct)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NameProduct)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NameProduct)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

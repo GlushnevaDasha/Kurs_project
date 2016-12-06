@@ -1,0 +1,89 @@
+﻿@model IEnumerable<kr_avt.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Каталог пользователей</h2>
+
+   
+
+@if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
+{ <p>
+
+    @Html.ActionLink("Добавить пользователя", "Create")
+</p> }
+<table>
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role.NameRole)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Passport_Data_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        @if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
+        {
+        <th>
+            @Html.DisplayNameFor(model => model.Login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        }
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role.NameRole)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Passport_Data_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        @if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
+        { <td>
+            @Html.DisplayFor(modelItem => item.Login)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>}
+        
+        <td>
+            @if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
+{
+    @*@Html.ActionLink("Details", "Details", new { id = item.IDUser })*@
+    @Html.ActionLink("Удалить", "Delete", new { id = item.IDUser })
+    @Html.ActionLink("Изменить", "Edit", new { id = item.IDUser })
+
+}
+        </td>
+    </tr>
+}
+
+</table>
