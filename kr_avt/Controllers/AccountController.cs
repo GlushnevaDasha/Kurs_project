@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
+
 namespace kr_avt.Controllers
 {
    
@@ -57,6 +58,7 @@ namespace kr_avt.Controllers
                 FormsAuthentication.SignOut();
                 return RedirectToAction("HomePage", "Home");
             }
-        }
+
+           }
     }
 

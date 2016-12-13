@@ -1,0 +1,74 @@
+﻿@model IEnumerable<kr_avt.Models.Sale>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Наши акции</h2>
+
+@if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
+{
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>}
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDAction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameAction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Start_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Completion_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.NameProduct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discount)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDAction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameAction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Start_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Completion_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.NameProduct)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discount)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>*@
+        <td>
+             @Html.ActionLink("Details", "Details", new { id = item.IDAction }) 
+@if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
+{
+            @Html.ActionLink("Edit", "Edit", new {id=item.IDAction  })
+            @Html.ActionLink("Delete", "Delete", new {  id=item.IDAction })
+            }
+        </td>
+    </tr>
+}
+
+</table>

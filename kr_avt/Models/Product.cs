@@ -16,7 +16,7 @@ namespace kr_avt.Models
     {
         public Product()
         {
-            this.Action = new HashSet<Action>();
+            this.Action = new HashSet<Sale>();
         }
     
         public int IDProduct { get; set; }
@@ -24,6 +24,6 @@ namespace kr_avt.Models
         public int Price { get; set; }
         public string Description { get; set; }
     
-        public virtual ICollection<Action> Action { get; set; }
+        public virtual ICollection<Sale> Action { get; set; }
     }
 }

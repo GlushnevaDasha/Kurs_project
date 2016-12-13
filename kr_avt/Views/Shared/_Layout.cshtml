@@ -12,27 +12,30 @@
     <header>
         <section id="login">
             @Html.Partial("_LoginPartical")
+            @Html.ActionLink("Регистрация", "Create", "User/Create")
+            <p><img src="images/ЛОГО.png" alt="Логотип агентства" @*width="500"*@ height="250" align="left" hspace="0"></p>
+            <br />
         </section>
     </header>
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
+    <h2>Меню сайта:</h2>
     <ul>
-        <li>@Html.ActionLink("Главная", "HomePage", "Home")</li>
-        @*<li>@Html.ActionLink("Мои заказы", "Index", "Ordering/Index")</li>
-        <li>@Html.ActionLink("Акции", "Index", "Action/Index")</li>*@
+      
+        @*<li>@Html.ActionLink("Главная", "HomePage", "Home")</li>*@
         <li>@Html.ActionLink("Каталог изделий", "Index", "Product/Index")</li>
         <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
+        @*<li>@Html.ActionLink("Заказы", "Index", "Ordering/Index")</li>*@
+        <li>@Html.ActionLink("Акции", "Index", "Sale/Index")</li>
+        
 @if (MyRoleProvider.Role(User.Identity.Name, "Администратор") || MyRoleProvider.Role(User.Identity.Name, "Директор"))
 { 
-    <li>@Html.ActionLink("Главная", "HomePage", "Home")</li>
+    
      @*<li>@Html.ActionLink("Каталог заказы", "Index", "Ordering/Index")</li>
         <li>@Html.ActionLink("Каталог акций", "Index", "Action/Index")</li>*@
-        <li>@Html.ActionLink("Каталог изделий", "Index", "Product/Index")</li>
-        <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
     <li>@Html.ActionLink("Каталог пользователей", "Index", "User/Index")</li> }
-        
     </ul>
 </body>
 </html>

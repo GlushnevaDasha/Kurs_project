@@ -12,7 +12,7 @@ namespace kr_avt.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Action
+    public partial class Sale
     {
         public int IDAction { get; set; }
         public string NameAction { get; set; }

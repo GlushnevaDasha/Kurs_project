@@ -25,7 +25,7 @@ namespace kr_avt.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Action> Action { get; set; }
+        public DbSet<Sale> Action { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<User> User { get; set; }

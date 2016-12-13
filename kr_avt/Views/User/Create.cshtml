@@ -4,31 +4,45 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Регистрация</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>User</legend>
+        <legend>Пользователь</legend>
 
-        <div class="editor-label">
+       <div class="editor-label">
             @Html.LabelFor(model => model.IDUser)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.IDUser)
             @Html.ValidationMessageFor(model => model.IDUser)
         </div>
-
+@if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
+{
         <div class="editor-label">
             @Html.LabelFor(model => model.IDRole, "Role")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("IDRole", String.Empty)
+            @*@Html.DropDownList("IDRole", String.Empty)*@
+            @Html.EditorFor(model => model.IDRole)
             @Html.ValidationMessageFor(model => model.IDRole)
         </div>
+}
 
+ @*@if (MyRoleProvider.Role(User.Identity.Name, ""))
+{
+    <div class="editor-label">
+        @Html.LabelFor(model => model.IDRole, "Role")
+    </div>
+             
+        <div class="editor-field">
+            @Html.DropDownList("IDRole", "Клиент")
+            @Html.ValidationMessageFor(model => model.IDRole)
+        </div>
+}*@ 
         <div class="editor-label">
             @Html.LabelFor(model => model.Surname)
         </div>
@@ -84,7 +98,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться", "Index")
 </div>
 
 @section Scripts {

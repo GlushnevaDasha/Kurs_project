@@ -2,7 +2,7 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище BDModelContainer" CdmEntityContainer="BDEntities">
     <EntitySetMapping Name="Action">
-      <EntityTypeMapping TypeName="BDModel.Action">
+      <EntityTypeMapping TypeName="BDModel.Sale">
         <MappingFragment StoreEntitySet="Action">
           <ScalarProperty Name="IDAction" ColumnName="IDAction" />
           <ScalarProperty Name="NameAction" ColumnName="NameAction" />

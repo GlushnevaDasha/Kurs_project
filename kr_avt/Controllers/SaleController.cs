@@ -9,113 +9,112 @@ using kr_avt.Models;
 
 namespace kr_avt.Controllers
 {
-    public class UserController : Controller
+    public class SaleController : Controller
     {
         private BDEntities db = new BDEntities();
 
         //
-        // GET: /User/
+        // GET: /Sale/
 
         public ActionResult Index()
         {
-            var user = db.User.Include(u => u.Role);
-            return View(user.ToList());
+            var action = db.Action.Include(s => s.Product);
+            return View(action.ToList());
         }
 
         //
-        // GET: /User/Details/5
+        // GET: /Sale/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            User user = db.User.Find(id);
-            if (user == null)
+            Sale sale = db.Action.Find(id);
+            if (sale == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(sale);
         }
 
         //
-        // GET: /User/Create
+        // GET: /Sale/Create
 
         public ActionResult Create()
         {
-            ViewBag.IDRole = new SelectList(db.Role, "IDRole", "NameRole");
+            ViewBag.IDProduct = new SelectList(db.Product, "IDProduct", "NameProduct");
             return View();
         }
 
         //
-        // POST: /User/Create
+        // POST: /Sale/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(User user)
+        public ActionResult Create(Sale sale)
         {
-            
             if (ModelState.IsValid)
             {
-                db.User.Add(user);
+                db.Action.Add(sale);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IDRole = new SelectList(db.Role, "IDRole", "NameRole", user.IDRole);
-            return View(user);
+            ViewBag.IDProduct = new SelectList(db.Product, "IDProduct", "NameProduct", sale.IDProduct);
+            return View(sale);
         }
 
         //
-        // GET: /User/Edit/5
+        // GET: /Sale/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            User user = db.User.Find(id);
-            if (user == null)
+            Sale sale = db.Action.Find(id);
+            if (sale == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IDRole = new SelectList(db.Role, "IDRole", "NameRole", user.IDRole);
-            return View(user);
+            ViewBag.IDProduct = new SelectList(db.Product, "IDProduct", "NameProduct", sale.IDProduct);
+            return View(sale);
         }
 
         //
-        // POST: /User/Edit/5
+        // POST: /Sale/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(User user)
+        public ActionResult Edit(Sale sale)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
+                db.Entry(sale).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IDRole = new SelectList(db.Role, "IDRole", "NameRole", user.IDRole);
-            return View(user);
+            ViewBag.IDProduct = new SelectList(db.Product, "IDProduct", "NameProduct", sale.IDProduct);
+            return View(sale);
         }
 
         //
-        // GET: /User/Delete/5
+        // GET: /Sale/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
-            User user = db.User.Find(id);
-            if (user == null)
+            Sale sale = db.Action.Find(id);
+            if (sale == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(sale);
         }
 
         //
-        // POST: /User/Delete/5
+        // POST: /Sale/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            User user = db.User.Find(id);
-            db.User.Remove(user);
+            Sale sale = db.Action.Find(id);
+            db.Action.Remove(sale);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
