@@ -14,43 +14,43 @@
         <legend>Sale</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.IDAction)
+            @Html.LabelFor(model => model.Id)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.IDAction)
-            @Html.ValidationMessageFor(model => model.IDAction)
+            @Html.EditorFor(model => model.Id)
+            @Html.ValidationMessageFor(model => model.Id)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.NameAction)
+            @Html.LabelFor(model => model.Name)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.NameAction)
-            @Html.ValidationMessageFor(model => model.NameAction)
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Start_Date)
+            @Html.LabelFor(model => model.StartDate)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Start_Date)
-            @Html.ValidationMessageFor(model => model.Start_Date)
+            @Html.EditorFor(model => model.StartDate)
+            @Html.ValidationMessageFor(model => model.StartDate)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Completion_Date)
+            @Html.LabelFor(model => model.StopDate)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Completion_Date)
-            @Html.ValidationMessageFor(model => model.Completion_Date)
+            @Html.EditorFor(model => model.StopDate)
+            @Html.ValidationMessageFor(model => model.StopDate)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.IDProduct, "Product")
+            @Html.LabelFor(model => model.Product.Name, "Product")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("IDProduct", String.Empty)
-            @Html.ValidationMessageFor(model => model.IDProduct)
+            @Html.DropDownList("Product", String.Empty)
+            @Html.ValidationMessageFor(model => model.Product.Name)
         </div>
 
         <div class="editor-label">

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a2d310a0da1d4e62a629a912d0705222" Name="Diagram1">
+        <EntityTypeShape EntityType="Ad_agencyModel.Ordering" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ad_agencyModel.Product" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ad_agencyModel.Role" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ad_agencyModel.Sale" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Ad_agencyModel.User" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Ad_agencyModel.FK__Ordering__Action__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="Ad_agencyModel.FK__Ordering__Client__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="Ad_agencyModel.FK__Ordering__Produc__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="Ad_agencyModel.FK__Sale__Product__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="Ad_agencyModel.FK__User__Role__1BFD2C07" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

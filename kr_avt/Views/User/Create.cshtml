@@ -14,35 +14,35 @@
         <legend>Пользователь</legend>
 
        <div class="editor-label">
-            @Html.LabelFor(model => model.IDUser)
+            @Html.LabelFor(model => model.Id)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.IDUser)
-            @Html.ValidationMessageFor(model => model.IDUser)
+            @Html.EditorFor(model => model.Id)
+            @Html.ValidationMessageFor(model => model.Id)
         </div>
 @if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
 {
         <div class="editor-label">
-            @Html.LabelFor(model => model.IDRole, "Role")
+            @Html.LabelFor(model => model.Role.Name, "Role")
         </div>
         <div class="editor-field">
             @*@Html.DropDownList("IDRole", String.Empty)*@
-            @Html.EditorFor(model => model.IDRole)
-            @Html.ValidationMessageFor(model => model.IDRole)
+            @Html.EditorFor(model => model.Role)
+            @Html.ValidationMessageFor(model => model.Role.Name)
         </div>
 }
 
- @*@if (MyRoleProvider.Role(User.Identity.Name, ""))
+ @if (MyRoleProvider.Role(User.Identity.Name, ""))
 {
     <div class="editor-label">
-        @Html.LabelFor(model => model.IDRole, "Role")
+        @Html.LabelFor(model => model.Role.Name, "Role")
     </div>
              
         <div class="editor-field">
             @Html.DropDownList("IDRole", "Клиент")
-            @Html.ValidationMessageFor(model => model.IDRole)
+            @Html.ValidationMessageFor(model => model.Role.Name)
         </div>
-}*@ 
+} 
         <div class="editor-label">
             @Html.LabelFor(model => model.Surname)
         </div>
@@ -60,11 +60,11 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Passport_Data_)
+            @Html.LabelFor(model => model.PassportData)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Passport_Data_)
-            @Html.ValidationMessageFor(model => model.Passport_Data_)
+            @Html.EditorFor(model => model.PassportData)
+            @Html.ValidationMessageFor(model => model.PassportData)
         </div>
 
         <div class="editor-label">

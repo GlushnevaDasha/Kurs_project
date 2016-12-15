@@ -14,19 +14,19 @@
         <legend>User</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.IDUser)
+            @Html.LabelFor(model => model.Id)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.IDUser)
-            @Html.ValidationMessageFor(model => model.IDUser)
+            @Html.EditorFor(model => model.Id)
+            @Html.ValidationMessageFor(model => model.Id)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.IDRole, "Role")
+            @Html.LabelFor(model => model.Role.Name, "Role")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("IDRole", String.Empty)
-            @Html.ValidationMessageFor(model => model.IDRole)
+            @Html.DropDownList("Role", String.Empty)
+            @Html.ValidationMessageFor(model => model.Role.Name)
         </div>
 
         <div class="editor-label">
@@ -46,11 +46,11 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Passport_Data_)
+            @Html.LabelFor(model => model.PassportData)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Passport_Data_)
-            @Html.ValidationMessageFor(model => model.Passport_Data_)
+            @Html.EditorFor(model => model.PassportData)
+            @Html.ValidationMessageFor(model => model.PassportData)
         </div>
 
         <div class="editor-label">

@@ -1,0 +1,130 @@
+﻿@model IEnumerable<kr_avt.Models.Ordering>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Заказы</h2>
+@if (!(MyRoleProvider.Role(User.Identity.Name, "Клиент"))&&
+     !(MyRoleProvider.Role(User.Identity.Name, "Менеджер"))&&
+     !(MyRoleProvider.Role(User.Identity.Name, "Директор"))&&
+     !(MyRoleProvider.Role(User.Identity.Name, "Администратор"))) 
+{
+    <p>   
+  
+     <h4>Нет прав доступа</h4>
+        <ol class="round">
+
+        На нашем сайте неавторизованный или незарегистрированный пользователь не может заказать понравившееся изделия. 
+        Для составления заказа необходимо
+        @Html.ActionLink("авторизоваться", "Login", "Account/Login") или @Html.ActionLink("зарегистрироваться", "Create", "User/Create").
+
+        </ol>
+    </p>
+}
+
+    @if (MyRoleProvider.Role(User.Identity.Name, "Клиент") 
+    || MyRoleProvider.Role(User.Identity.Name, "Менеджер") ||  MyRoleProvider.Role(User.Identity.Name, "Директор") ||
+     MyRoleProvider.Role(User.Identity.Name, "Администратор"))
+{
+        <p>
+        @if (MyRoleProvider.Role(User.Identity.Name, "Клиент") ||
+        MyRoleProvider.Role(User.Identity.Name, "Менеджер")) 
+        {@Html.ActionLink("Create New", "Create") }
+        </p>
+
+    <table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.RoleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sale.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) 
+    {         
+        if (User.Identity.Name == item.User.Login) 
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sale.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            @if (item.Status == false) {
+                <td>
+                @Html.DisplayFor(modelItem => item.Status)
+                <input type="button" value="Оплатить">
+                </td> 
+            }
+            @if (item.Status != false)
+            {
+                <td>
+                @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            }
+
+            
+        </tr>
+        }
+
+        if (MyRoleProvider.Role(User.Identity.Name, "Менеджер") || MyRoleProvider.Role(User.Identity.Name, "Директор") ||
+     MyRoleProvider.Role(User.Identity.Name, "Администратор"))
+        {
+            <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
+            </td>
+              @if (item.Sale != null) {
+              <td>
+                @Html.DisplayFor(modelItem => item.Sale.Name)
+            </td>
+              }
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                </tr>
+        }
+    }
+       
+    </table>
+}
+
+  

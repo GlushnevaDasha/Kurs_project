@@ -11,7 +11,7 @@ namespace kr_avt.Controllers
 {
     public class ProductController : Controller
     {
-        private BDEntities db = new BDEntities();
+        private AgencyEntities db = new AgencyEntities();
 
         //
         // GET: /Product/
@@ -24,7 +24,7 @@ namespace kr_avt.Controllers
         //
         // GET: /Product/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(string id = null)
         {
             Product product = db.Product.Find(id);
             if (product == null)
@@ -62,7 +62,7 @@ namespace kr_avt.Controllers
         //
         // GET: /Product/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(string id = null)
         {
             Product product = db.Product.Find(id);
             if (product == null)
@@ -91,7 +91,7 @@ namespace kr_avt.Controllers
         //
         // GET: /Product/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(string id = null)
         {
             Product product = db.Product.Find(id);
             if (product == null)
@@ -106,7 +106,7 @@ namespace kr_avt.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             Product product = db.Product.Find(id);
             db.Product.Remove(product);

@@ -132,6 +132,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderingController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -139,39 +140,42 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModel.cs" />
-    <Compile Include="Models\ag.Context.cs">
+    <Compile Include="Models\AdAg.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ag.Context.tt</DependentUpon>
+      <DependentUpon>AdAg.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ag.cs">
+    <Compile Include="Models\AdAg.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ag.tt</DependentUpon>
+      <DependentUpon>AdAg.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ag.Designer.cs">
+    <Compile Include="Models\AdAg.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ag.edmx</DependentUpon>
+      <DependentUpon>AdAg.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ordering.cs">
+      <DependentUpon>AdAg.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>ag.tt</DependentUpon>
+      <DependentUpon>AdAg.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Role.cs">
-      <DependentUpon>ag.tt</DependentUpon>
+      <DependentUpon>AdAg.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sale.cs">
-      <DependentUpon>ag.tt</DependentUpon>
+      <DependentUpon>AdAg.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>ag.tt</DependentUpon>
+      <DependentUpon>AdAg.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\BD.mdf" />
-    <Content Include="App_Data\BD_log.ldf">
-      <DependentUpon>BD.mdf</DependentUpon>
+    <Content Include="App_Data\Ad_agency.mdf" />
+    <Content Include="App_Data\Ad_agency_log.ldf">
+      <DependentUpon>Ad_agency.mdf</DependentUpon>
     </Content>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -229,24 +233,24 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <EntityDeploy Include="Models\ag.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ag.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <Content Include="images\ЛОГО.png" />
-    <Content Include="images\ЛОГО.tif" />
-    <Content Include="Models\ag.Context.tt">
+    <EntityDeploy Include="Models\AdAg.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AdAg.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="images\ЛОГО2.png" />
+    <Content Include="Models\AdAg.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ag.edmx</DependentUpon>
-      <LastGenOutput>ag.Context.cs</LastGenOutput>
+      <DependentUpon>AdAg.edmx</DependentUpon>
+      <LastGenOutput>AdAg.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ag.edmx.diagram">
-      <DependentUpon>ag.edmx</DependentUpon>
+    <Content Include="Models\AdAg.edmx.diagram">
+      <DependentUpon>AdAg.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\ag.tt">
+    <Content Include="Models\AdAg.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ag.edmx</DependentUpon>
-      <LastGenOutput>ag.cs</LastGenOutput>
+      <DependentUpon>AdAg.edmx</DependentUpon>
+      <LastGenOutput>AdAg.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -298,6 +302,11 @@
     <Content Include="Views\Sale\Create.cshtml" />
     <Content Include="Views\Sale\Edit.cshtml" />
     <Content Include="Views\Sale\Delete.cshtml" />
+    <Content Include="Views\Ordering\Index.cshtml" />
+    <Content Include="Views\Ordering\Details.cshtml" />
+    <Content Include="Views\Ordering\Create.cshtml" />
+    <Content Include="Views\Ordering\Edit.cshtml" />
+    <Content Include="Views\Ordering\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

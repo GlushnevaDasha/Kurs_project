@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\Даша\Documents\Visual Studio 2013\Projects\kr_avt\kr_avt\Models\ag.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\Даша\documents\visual studio 2013\Projects\kr_avt\kr_avt\Models\AdAg.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

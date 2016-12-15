@@ -14,15 +14,21 @@ namespace kr_avt.Models
     
     public partial class User
     {
-        public int IDUser { get; set; }
-        public int IDRole { get; set; }
+        public User()
+        {
+            this.Ordering = new HashSet<Ordering>();
+        }
+    
+        public int Id { get; set; }
+        public string RoleName { get; set; }
         public string Surname { get; set; }
         public string Name { get; set; }
-        public string Passport_Data_ { get; set; }
+        public string PassportData { get; set; }
         public string Email { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
     
+        public virtual ICollection<Ordering> Ordering { get; set; }
         public virtual Role Role { get; set; }
     }
 }

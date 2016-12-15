@@ -11,15 +11,15 @@ namespace kr_avt.Controllers
 {
     public class SaleController : Controller
     {
-        private BDEntities db = new BDEntities();
+        private AgencyEntities db = new AgencyEntities();
 
         //
         // GET: /Sale/
 
         public ActionResult Index()
         {
-            var action = db.Action.Include(s => s.Product);
-            return View(action.ToList());
+            var sale = db.Sale.Include(s => s.Product);
+            return View(sale.ToList());
         }
 
         //
@@ -27,7 +27,7 @@ namespace kr_avt.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Sale sale = db.Action.Find(id);
+            Sale sale = db.Sale.Find(id);
             if (sale == null)
             {
                 return HttpNotFound();
@@ -40,7 +40,7 @@ namespace kr_avt.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.IDProduct = new SelectList(db.Product, "IDProduct", "NameProduct");
+            ViewBag.ProductName = new SelectList(db.Product, "Name", "Description");
             return View();
         }
 
@@ -53,12 +53,12 @@ namespace kr_avt.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Action.Add(sale);
+                db.Sale.Add(sale);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IDProduct = new SelectList(db.Product, "IDProduct", "NameProduct", sale.IDProduct);
+            ViewBag.ProductName = new SelectList(db.Product, "Name", "Description", sale.ProductName);
             return View(sale);
         }
 
@@ -67,12 +67,12 @@ namespace kr_avt.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Sale sale = db.Action.Find(id);
+            Sale sale = db.Sale.Find(id);
             if (sale == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IDProduct = new SelectList(db.Product, "IDProduct", "NameProduct", sale.IDProduct);
+            ViewBag.ProductName = new SelectList(db.Product, "Name", "Description", sale.ProductName);
             return View(sale);
         }
 
@@ -89,7 +89,7 @@ namespace kr_avt.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IDProduct = new SelectList(db.Product, "IDProduct", "NameProduct", sale.IDProduct);
+            ViewBag.ProductName = new SelectList(db.Product, "Name", "Description", sale.ProductName);
             return View(sale);
         }
 
@@ -98,7 +98,7 @@ namespace kr_avt.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Sale sale = db.Action.Find(id);
+            Sale sale = db.Sale.Find(id);
             if (sale == null)
             {
                 return HttpNotFound();
@@ -113,8 +113,8 @@ namespace kr_avt.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Sale sale = db.Action.Find(id);
-            db.Action.Remove(sale);
+            Sale sale = db.Sale.Find(id);
+            db.Sale.Remove(sale);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

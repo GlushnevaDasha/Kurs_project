@@ -14,14 +14,20 @@ namespace kr_avt.Models
     
     public partial class Sale
     {
-        public int IDAction { get; set; }
-        public string NameAction { get; set; }
-        public System.DateTime Start_Date { get; set; }
-        public System.DateTime Completion_Date { get; set; }
-        public int IDProduct { get; set; }
+        public Sale()
+        {
+            this.Ordering = new HashSet<Ordering>();
+        }
+    
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public System.DateTime StartDate { get; set; }
+        public System.DateTime StopDate { get; set; }
+        public string ProductName { get; set; }
         public int Discount { get; set; }
         public string Description { get; set; }
     
+        public virtual ICollection<Ordering> Ordering { get; set; }
         public virtual Product Product { get; set; }
     }
 }

@@ -19,8 +19,7 @@ namespace kr_avt.Models
             this.User = new HashSet<User>();
         }
     
-        public int IDRole { get; set; }
-        public string NameRole { get; set; }
+        public string Name { get; set; }
     
         public virtual ICollection<User> User { get; set; }
     }

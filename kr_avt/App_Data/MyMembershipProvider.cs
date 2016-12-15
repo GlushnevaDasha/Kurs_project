@@ -147,7 +147,7 @@ using System.Web.Security;
 
         public override bool ValidateUser(string username, string password)
         {
-            using (BDEntities db = new BDEntities())
+            using (AgencyEntities db = new AgencyEntities())
             {
                 var result = from u in db.User where (u.Login == username) select u;
 

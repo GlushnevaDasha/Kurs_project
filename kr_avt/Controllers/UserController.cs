@@ -11,7 +11,7 @@ namespace kr_avt.Controllers
 {
     public class UserController : Controller
     {
-        private BDEntities db = new BDEntities();
+        private AgencyEntities db = new AgencyEntities();
 
         //
         // GET: /User/
@@ -59,7 +59,7 @@ namespace kr_avt.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IDRole = new SelectList(db.Role, "IDRole", "NameRole", user.IDRole);
+            ViewBag.IDRole = new SelectList(db.Role, "Role", user.RoleName);
             return View(user);
         }
 
@@ -73,7 +73,7 @@ namespace kr_avt.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IDRole = new SelectList(db.Role, "IDRole", "NameRole", user.IDRole);
+            ViewBag.IDRole = new SelectList(db.Role, "NameRole", user.RoleName);
             return View(user);
         }
 
@@ -90,7 +90,7 @@ namespace kr_avt.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IDRole = new SelectList(db.Role, "IDRole", "NameRole", user.IDRole);
+            ViewBag.IDRole = new SelectList(db.Role, "NameRole", user.RoleName);
             return View(user);
         }
 

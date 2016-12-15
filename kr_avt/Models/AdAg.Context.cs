@@ -13,10 +13,10 @@ namespace kr_avt.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BDEntities : DbContext
+    public partial class AgencyEntities : DbContext
     {
-        public BDEntities()
-            : base("name=BDEntities")
+        public AgencyEntities()
+            : base("name=AgencyEntities")
         {
         }
     
@@ -25,9 +25,10 @@ namespace kr_avt.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Sale> Action { get; set; }
+        public DbSet<Ordering> Ordering { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Role> Role { get; set; }
+        public DbSet<Sale> Sale { get; set; }
         public DbSet<User> User { get; set; }
     }
 }

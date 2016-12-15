@@ -12,19 +12,18 @@ namespace kr_avt.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class Ordering
     {
-        public Product()
-        {
-            this.Ordering = new HashSet<Ordering>();
-            this.Sale = new HashSet<Sale>();
-        }
+        public int Id { get; set; }
+        public System.DateTime Date { get; set; }
+        public string Client { get; set; }
+        public string ProductName { get; set; }
+        public Nullable<int> ActionId { get; set; }
+        public string Number { get; set; }
+        public bool Status { get; set; }
     
-        public string Name { get; set; }
-        public int Price { get; set; }
-        public string Description { get; set; }
-    
-        public virtual ICollection<Ordering> Ordering { get; set; }
-        public virtual ICollection<Sale> Sale { get; set; }
+        public virtual Sale Sale { get; set; }
+        public virtual User User { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

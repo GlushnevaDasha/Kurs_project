@@ -17,10 +17,10 @@
 
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IDUser)
+            @Html.DisplayNameFor(model => model.Id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Role.NameRole)
+            @Html.DisplayNameFor(model => model.Role.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Surname)
@@ -29,7 +29,7 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Passport_Data_)
+            @Html.DisplayNameFor(model => model.PassportData)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
@@ -49,10 +49,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.IDUser)
+            @Html.DisplayFor(modelItem => item.Id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Role.NameRole)
+            @Html.DisplayFor(modelItem => item.Role.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Surname)
@@ -61,7 +61,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Passport_Data_)
+            @Html.DisplayFor(modelItem => item.PassportData)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Email)
@@ -78,8 +78,8 @@
             @if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
 {
     @*@Html.ActionLink("Details", "Details", new { id = item.IDUser })*@
-    @Html.ActionLink("Удалить", "Delete", new { id = item.IDUser })
-    @Html.ActionLink("Изменить", "Edit", new { id = item.IDUser })
+    @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+    @Html.ActionLink("Изменить", "Edit", new { id = item.Id })
 
 }
         </td>

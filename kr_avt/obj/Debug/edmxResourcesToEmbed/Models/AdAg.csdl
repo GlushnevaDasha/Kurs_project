@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Ad_agencyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Ordering">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Client" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ActionId" Type="Int32" />
+    <Property Name="Number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Sale" Relationship="Self.FK__Ordering__Action__1ED998B2" FromRole="Ordering" ToRole="Sale" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Ordering__Client__1DE57479" FromRole="Ordering" ToRole="User" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Ordering__Produc__1CF15040" FromRole="Ordering" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Ordering" Relationship="Self.FK__Ordering__Produc__1CF15040" FromRole="Product" ToRole="Ordering" />
+    <NavigationProperty Name="Sale" Relationship="Self.FK__Sale__Product__145C0A3F" FromRole="Product" ToRole="Sale" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK__User__Role__1BFD2C07" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Sale">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StopDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Discount" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Ordering" Relationship="Self.FK__Ordering__Action__1ED998B2" FromRole="Sale" ToRole="Ordering" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Sale__Product__145C0A3F" FromRole="Sale" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Login" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="PassportData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Ordering" Relationship="Self.FK__Ordering__Client__1DE57479" FromRole="User" ToRole="Ordering" />
+    <NavigationProperty Name="Role" Relationship="Self.FK__User__Role__1BFD2C07" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK__Ordering__Action__1ED998B2">
+    <End Role="Sale" Type="Self.Sale" Multiplicity="0..1" />
+    <End Role="Ordering" Type="Self.Ordering" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sale">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ordering">
+        <PropertyRef Name="ActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ordering__Client__1DE57479">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Ordering" Type="Self.Ordering" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Login" />
+      </Principal>
+      <Dependent Role="Ordering">
+        <PropertyRef Name="Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ordering__Produc__1CF15040">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Ordering" Type="Self.Ordering" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Ordering">
+        <PropertyRef Name="ProductName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sale__Product__145C0A3F">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="ProductName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User__Role__1BFD2C07">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AgencyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Ordering" EntityType="Self.Ordering" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="Sale" EntityType="Self.Sale" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <AssociationSet Name="FK__Ordering__Action__1ED998B2" Association="Self.FK__Ordering__Action__1ED998B2">
+      <End Role="Sale" EntitySet="Sale" />
+      <End Role="Ordering" EntitySet="Ordering" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ordering__Client__1DE57479" Association="Self.FK__Ordering__Client__1DE57479">
+      <End Role="User" EntitySet="User" />
+      <End Role="Ordering" EntitySet="Ordering" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ordering__Produc__1CF15040" Association="Self.FK__Ordering__Produc__1CF15040">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Ordering" EntitySet="Ordering" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sale__Product__145C0A3F" Association="Self.FK__Sale__Product__145C0A3F">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User__Role__1BFD2C07" Association="Self.FK__User__Role__1BFD2C07">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

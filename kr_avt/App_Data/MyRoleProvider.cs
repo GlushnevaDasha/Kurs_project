@@ -13,19 +13,19 @@ using System.Web.Security;
         {
             bool outputResult = false;
             // Находим пользователя 
-            using (BDEntities _db = new BDEntities())
+            using (AgencyEntities _db = new AgencyEntities())
             {
                 // Получаем пользователя 
                 User user = (from u in _db.User
                                  where u.Login == username
                                  select u).FirstOrDefault();
                 if (user != null)
-                {
-                    // получаем роль 
-                    var role = _db.Role.Find(user.IDRole);
+                {                    // получаем роль 
+
+                    var role = _db.Role.Find(user.RoleName);
 
                     //сравниваем 
-                    if (role.NameRole.Equals(roleName))
+                    if (role.Name.Equals(roleName))
                     {
                         outputResult = true;
                     }
@@ -84,7 +84,7 @@ using System.Web.Security;
         {
             bool outputResult = false;
             // Находим пользователя 
-            using (BDEntities _db = new BDEntities())
+            using (AgencyEntities _db = new AgencyEntities())
             {
                 // Получаем пользователя 
                 User user = (from u in _db.User
@@ -96,7 +96,7 @@ using System.Web.Security;
                     var role = user.Role;
 
                     //сравниваем 
-                    if (role != null && role.NameRole == roleName)
+                    if (role != null && role.Name == roleName)
                     {
                         outputResult = true;
                     }

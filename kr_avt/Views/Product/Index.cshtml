@@ -14,10 +14,7 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IDProduct)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NameProduct)
+            @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
@@ -31,10 +28,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.IDProduct)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NameProduct)
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
@@ -45,11 +39,11 @@
         <td>
 @if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
 {
-            @Html.ActionLink("Edit", "Edit", new {  id=item.IDProduct })
+            @Html.ActionLink("Edit", "Edit", new {  id=item.Name })
             
-            @Html.ActionLink("Delete", "Delete", new {  id=item.IDProduct })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Name })
 }
-@Html.ActionLink("Details", "Details", new {  id=item.IDProduct }) 
+@Html.ActionLink("Details", "Details", new { id = item.Name }) 
         </td>
     </tr>
 }
