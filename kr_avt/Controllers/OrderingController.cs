@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using kr_avt.Models;
+using kr_avt.Servise;
 
 namespace kr_avt.Controllers
 {
@@ -41,8 +42,8 @@ namespace kr_avt.Controllers
         public ActionResult Create()
         {
             ViewBag.ActionId = new SelectList(db.Sale, "Id", "Name");
-            ViewBag.Client = new SelectList(db.User, "Surnamee", "Surname");
-            ViewBag.ProductName = new SelectList(db.Product, "Name", "Name");
+            ViewBag.Client = new SelectList(db.User, "Login", "RoleName");
+            ViewBag.ProductName = new SelectList(db.Product, "Name", "Description");
             return View();
         }
 
@@ -53,16 +54,21 @@ namespace kr_avt.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Ordering ordering)
         {
+
             if (ModelState.IsValid)
             {
+                
+                ordering.Date = DateTime.Now;
+                ordering.Client = User.Identity.Name;
+                ordering.Status = false;
                 db.Ordering.Add(ordering);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.ActionId = new SelectList(db.Sale, "Id", "Name", ordering.ActionId);
-            ViewBag.Client = new SelectList(db.User, "Surname", "Surname", ordering.Client);
-            ViewBag.ProductName = new SelectList(db.Product, "Name", "Name", ordering.ProductName);
+            ViewBag.Client = new SelectList(db.User, "Login", "RoleName", ordering.Client);
+            ViewBag.ProductName = new SelectList(db.Product, "Name", "Description", ordering.ProductName);
             return View(ordering);
         }
 
@@ -77,8 +83,8 @@ namespace kr_avt.Controllers
                 return HttpNotFound();
             }
             ViewBag.ActionId = new SelectList(db.Sale, "Id", "Name", ordering.ActionId);
-            ViewBag.Client = new SelectList(db.User, "Surname", "Surname", ordering.Client);
-            ViewBag.ProductName = new SelectList(db.Product, "Name", "Name", ordering.ProductName);
+            ViewBag.Client = new SelectList(db.User, "Login", "RoleName", ordering.Client);
+            ViewBag.ProductName = new SelectList(db.Product, "Name", "Description", ordering.ProductName);
             return View(ordering);
         }
 
@@ -96,8 +102,8 @@ namespace kr_avt.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ActionId = new SelectList(db.Sale, "Id", "Name", ordering.ActionId);
-            ViewBag.Client = new SelectList(db.User, "Surname", "Surname", ordering.Client);
-            ViewBag.ProductName = new SelectList(db.Product, "Name", "Name", ordering.ProductName);
+            ViewBag.Client = new SelectList(db.User, "Login", "RoleName", ordering.Client);
+            ViewBag.ProductName = new SelectList(db.Product, "Name", "Description", ordering.ProductName);
             return View(ordering);
         }
 
@@ -133,5 +139,23 @@ namespace kr_avt.Controllers
             base.Dispose(disposing);
         }
 
-     }
+        [HttpPost]
+        public void Pay(/*int id, DateTime date,string client,string product,string number,int sale, bool status*/ Ordering ord, string s) 
+        {
+            int a = 10;
+            string b = ord.Number;
+            int sum;
+            sum = a * Convert.ToInt32(b);
+
+            Service1 ser = new Service1();
+            if (ser.Payments(s, sum)) 
+            {
+                ord.Client = User.Identity.Name; 
+                ord.Status = true;
+                db.Entry(ord).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            // создание об
+        }
+    }
 }

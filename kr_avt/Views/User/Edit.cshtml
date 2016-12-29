@@ -4,33 +4,29 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Изменить</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>User</legend>
+        <legend>Пользователь</legend>
+
+        @*@Html.HiddenFor(model => model.Id)*@
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Id)
+            @*@Html.LabelFor(model => model.RoleName, "Role")*@
+            <h4>Роль в системе</h4>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Id)
-            @Html.ValidationMessageFor(model => model.Id)
+            @Html.DropDownList("RoleName", String.Empty)
+            @Html.ValidationMessageFor(model => model.RoleName)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Role.Name, "Role")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("Role", String.Empty)
-            @Html.ValidationMessageFor(model => model.Role.Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Surname)
+            @*@Html.LabelFor(model => model.Surname)*@
+            <h4>Фамилия</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Surname)
@@ -38,7 +34,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            @*@Html.LabelFor(model => model.Name)*@
+            <h4>Имя</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
@@ -46,15 +43,17 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.PassportData)
+            @*@Html.LabelFor(model => model.PassportData)*@
+            <h4>Паспортные данные</h4>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.PassportData)
+            @Html.TextBoxFor(model => model.PassportData, new { style = "width: 500px; height: 100px" })
             @Html.ValidationMessageFor(model => model.PassportData)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Email)
+            @*@Html.LabelFor(model => model.Email)*@
+            <h4>Email</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Email)
@@ -62,7 +61,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Login)
+            @*@Html.LabelFor(model => model.Login)*@
+            <h4>Логин</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Login)
@@ -70,7 +70,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Password)
+            @*@Html.LabelFor(model => model.Password)*@
+            <h4>Пароль</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Password)
@@ -78,13 +79,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Сохранить" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться назад", "Index")
 </div>
 
 @section Scripts {

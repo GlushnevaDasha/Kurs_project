@@ -4,25 +4,18 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Создание акции</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Sale</legend>
+        <legend>Акция</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Id)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Id)
-            @Html.ValidationMessageFor(model => model.Id)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            @*@Html.LabelFor(model => model.Name)*@
+            <h4>Название</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
@@ -30,7 +23,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.StartDate)
+            @*@Html.LabelFor(model => model.StartDate)*@
+            <h4>Начало проведения</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.StartDate)
@@ -38,7 +32,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.StopDate)
+            @*@Html.LabelFor(model => model.StopDate)*@
+            <h4>Конец проведения</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.StopDate)
@@ -46,15 +41,17 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Product.Name, "Product")
+            @*@Html.LabelFor(model => model.ProductName, "Product")*@
+            <h4>Изделие</h4>
         </div>
         <div class="editor-field">
-            @Html.DropDownList("Product", String.Empty)
-            @Html.ValidationMessageFor(model => model.Product.Name)
+            @Html.DropDownList("ProductName", String.Empty)
+            @Html.ValidationMessageFor(model => model.ProductName)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Discount)
+            @*@Html.LabelFor(model => model.Discount)*@
+            <h4>Скидка</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Discount)
@@ -62,21 +59,22 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Description)
+            @*@Html.LabelFor(model => model.Description)*@
+            <h4>Описание</h4>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
+            @Html.TextBoxFor(model => model.Description, new { style = "width: 500px; height: 100px" })
             @Html.ValidationMessageFor(model => model.Description)
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Создать" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться назад", "Index")
 </div>
 
 @section Scripts {

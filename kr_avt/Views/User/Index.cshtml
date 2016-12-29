@@ -4,53 +4,45 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Каталог пользователей</h2>
+<h2>Пользователи</h2>
 
-   
-
-@if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
-{ <p>
-
-    @Html.ActionLink("Добавить пользователя", "Create")
-</p> }
+<p>
+    @Html.ActionLink("Зарегистрировать нового пользователя", "Create")
+</p>
 <table>
-
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id)
+        <th valign="top">
+            @*@Html.DisplayNameFor(model => model.Role.Name)*@
+            <h4>Роль в системе</h4>
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Role.Name)
+        <th valign="top">
+            @*@Html.DisplayNameFor(model => model.Surname)*@
+            <h4>Фамилия</h4>
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Surname)
+        <th valign="top">
+            @*@Html.DisplayNameFor(model => model.Name)*@
+            <h4>Имя</h4>
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
+        <th valign="top">
+            @*@Html.DisplayNameFor(model => model.PassportData)*@
+            <h4>Паспортные данные</h4>
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PassportData)
+        <th valign="top">
+            @*@Html.DisplayNameFor(model => model.Email)*@
+            <h4>Email</h4>
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
+        <th valign="top">
+            @*@Html.DisplayNameFor(model => model.Login)*@
+            <h4>Логин</h4>
         </th>
-        @if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
-        {
-        <th>
-            @Html.DisplayNameFor(model => model.Login)
+        <th valign="top">
+            @*@Html.DisplayNameFor(model => model.Password)*@
+            <h4>Пароль</h4>
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        }
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Role.Name)
         </td>
@@ -66,22 +58,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>
-        @if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
-        { <td>
+        <td>
             @Html.DisplayFor(modelItem => item.Login)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Password)
-        </td>}
-        
+        </td>
         <td>
-            @if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
-{
-    @*@Html.ActionLink("Details", "Details", new { id = item.IDUser })*@
-    @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
-    @Html.ActionLink("Изменить", "Edit", new { id = item.Id })
-
-}
+            @Html.ActionLink("Изменить", "Edit", new { id=item.Login }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Login })
         </td>
     </tr>
 }

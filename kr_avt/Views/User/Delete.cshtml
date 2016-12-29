@@ -4,63 +4,63 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Удаление пользователя</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Вы уверены, что хотите удалить этого пользователя?</h3>
 <fieldset>
-    <legend>User</legend>
+    <legend>Пользователь</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Id)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Id)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Role.Name)
+         @*@Html.DisplayNameFor(model => model.Role.Name)*@
+        <h4>Роль в системе</h4>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Role.Name)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Surname)
+         @*@Html.DisplayNameFor(model => model.Surname)*@
+        <h4>Фамилия</h4>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Surname)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
+         @*@Html.DisplayNameFor(model => model.Name)*@
+        <h4>Имя</h4>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Name)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.PassportData)
+         @*@Html.DisplayNameFor(model => model.PassportData)*@
+        <h4>Паспортные данные</h4>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.PassportData)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Email)
+         @*@Html.DisplayNameFor(model => model.Email)*@
+        <h4>Email</h4>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Email)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Login)
+         @*@Html.DisplayNameFor(model => model.Login)*@
+        <h4>Логин</h4>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Login)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Password)
+         @*@Html.DisplayNameFor(model => model.Password)*@
+        <h4>Пароль</h4>
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Password)
@@ -69,7 +69,7 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="Удалить" /> |
+        @Html.ActionLink("Вернуться назад", "Index")
     </p>
 }

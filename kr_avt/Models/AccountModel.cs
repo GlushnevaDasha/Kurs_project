@@ -11,7 +11,7 @@ namespace kr_avt.Models
     public class UsersContext : DbContext
     {
         public UsersContext()
-            : base("BDEntities")
+            : base("AgencyEntities")
         {
         }
 

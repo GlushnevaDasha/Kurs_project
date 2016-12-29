@@ -4,42 +4,73 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Site.css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <header>
+        @*<section id="login">*@
+            <p><img src="../../images/ЛОГО.png" alt="Логотип агентства" @*width="500"*@ height="100" align="left" hspace="0"></p>
+            <br />
+            <font face="Monotype Corsiva" size="+4" color="#4169E1">
+                Дизайн и качество в короткие сроки
+            </font>
+            <p>
+                @Html.Partial("_LoginPartical")
+                @if (!(MyRoleProvider.Role(User.Identity.Name, "Клиент")) &&
+                     !(MyRoleProvider.Role(User.Identity.Name, "Менеджер")) &&
+                     !(MyRoleProvider.Role(User.Identity.Name, "Директор")) &&
+                     !(MyRoleProvider.Role(User.Identity.Name, "Администратор")))
+                {
+                    @Html.ActionLink("Регистрация", "Create", "User/Create")}
+            </p>
+         @*</section>*@
+    </header>
 </head>
 <body>
-    <header>
-        <section id="login">
-                <p><img src="../../images/ЛОГО.png" alt="Логотип агентства" @*width="500"*@ height="100" align="left" hspace="0"></p>
-                <br />
-                <font face="Monotype Corsiva" size="+4" color="#4169E1">
-                    Дизайн и качество в короткие сроки
-                </font>
+    <style>
+        #navbar, #navbar ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
 
-                <p>
-                    @Html.Partial("_LoginPartical")
-                    @if (!(MyRoleProvider.Role(User.Identity.Name, "Клиент")) &&
-     !(MyRoleProvider.Role(User.Identity.Name, "Менеджер")) &&
-     !(MyRoleProvider.Role(User.Identity.Name, "Директор")) &&
-     !(MyRoleProvider.Role(User.Identity.Name, "Администратор")))
-                    {
-                        @Html.ActionLink("Регистрация", "Create", "User/Create")}
-                </p>
-            <div class="content-wrapper">
-               <hr align="left" size="5" width="100%" color="#C0C0C0" /></div>
-</section>
-    </header>
-    <h2>Меню сайта:</h2>
-    <ul>
-         @*<li>@Html.ActionLink("Главная", "HomePage", "Home")</li>*@
-        <li>@Html.ActionLink("Каталог изделий", "Index", "Product/Index")</li>
-        <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
-        <li>@Html.ActionLink("Заказы", "Index", "Ordering/Index")</li>
+        #navbar {
+            height: 30px;
+            background-color: #666;
+            padding-left: 25px;
+            min-width: 470px;
+        }
+
+            #navbar li {
+                float: left;
+                position: relative;
+                height: 100%;
+            }
+
+                #navbar li a {
+                    display: block;
+                    padding: 6px;
+                    width: 100px;
+                    color: #fff;
+                    text-decoration: none;
+                    text-align: center;
+                }
+
+            #navbar li:hover {
+                background-color: #f90;
+            }
+
+    </style>
+    @*<h2>Меню сайта:</h2>*@
+    <ul id="navbar">
+        @*<li>@Html.ActionLink("Главная", "HomePage", "Home")</li>*@
+        <li>@Html.ActionLink("Изделия", "Index", "Product/Index")</li>
         <li>@Html.ActionLink("Акции", "Index", "Sale/Index")</li>
+        <li>@Html.ActionLink("Заказы", "Index", "Ordering/Index")</li>
+        <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
 
         @if (MyRoleProvider.Role(User.Identity.Name, "Администратор") || MyRoleProvider.Role(User.Identity.Name, "Директор"))
-        {  <li>@Html.ActionLink("Каталог пользователей", "Index", "User/Index")</li> }
+        {
+        <li>@Html.ActionLink("Пользователи", "Index", "User/Index")</li> }
     </ul>
     @*<div class="content-wrapper">
         <hr align="left" size="5" width="100%" color="#C0C0C0" />

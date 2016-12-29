@@ -4,19 +4,20 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Изменение</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Ordering</legend>
+        <legend>Заказ</legend>
 
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Date)
+            @*@Html.LabelFor(model => model.Date)*@
+            <h4>Дата</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Date)
@@ -24,7 +25,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Client, "User")
+            <h4>Клиент</h4>
+            @*@Html.LabelFor(model => model.Client, "User")*@
         </div>
         <div class="editor-field">
             @Html.DropDownList("Client", String.Empty)
@@ -32,7 +34,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ProductName, "Product")
+            <h4>Изделие</h4>
+            @*@Html.LabelFor(model => model.ProductName, "Product")*@
         </div>
         <div class="editor-field">
             @Html.DropDownList("ProductName", String.Empty)
@@ -40,7 +43,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ActionId, "Sale")
+            <h4>Скидка</h4>
+            @*@Html.LabelFor(model => model.ActionId, "Sale")*@
         </div>
         <div class="editor-field">
             @Html.DropDownList("ActionId", String.Empty)
@@ -48,7 +52,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Number)
+            <h4>Количество</h4>
+            @*@Html.LabelFor(model => model.Number)*@
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Number)
@@ -56,7 +61,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Status)
+            <h4>Оплата</h4>
+            @*@Html.LabelFor(model => model.Status)*@
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Status)
@@ -64,13 +70,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Сохранить" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться назад", "Index")
 </div>
 
 @section Scripts {

@@ -4,44 +4,42 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Наши акции</h2>
+<h2>Акции</h2>
 
-@if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
-{
 <p>
-    @Html.ActionLink("Create New", "Create")
-</p>}
+    @Html.ActionLink("Добавить новую акцию", "Create")
+</p>
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Id)
+            @*@Html.DisplayNameFor(model => model.Name)*@
+            <h4>Название акции</h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @*@Html.DisplayNameFor(model => model.StartDate)*@
+            <h4>Начало провеения</h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StartDate)
+            @*@Html.DisplayNameFor(model => model.StopDate)*@
+            <h4>Конец проведения</h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StopDate)
+            @*@Html.DisplayNameFor(model => model.Product.Description)*@
+            <h4>Изделие</h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Product.Name)
+            @*@Html.DisplayNameFor(model => model.Discount)*@
+            <h4>Скидка</h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Discount)
+            @*@Html.DisplayNameFor(model => model.Description)*@
+            <h4>Описание</h4>
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
@@ -57,16 +55,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Discount)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>*@
         <td>
-             @Html.ActionLink("Details", "Details", new { id = item.Id }) 
-@if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
-{
-            @Html.ActionLink("Edit", "Edit", new {id=item.Id  })
-            @Html.ActionLink("Delete", "Delete", new {  id=item.Id })
-            }
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

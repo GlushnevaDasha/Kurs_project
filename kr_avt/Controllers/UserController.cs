@@ -25,7 +25,7 @@ namespace kr_avt.Controllers
         //
         // GET: /User/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(string id = null)
         {
             User user = db.User.Find(id);
             if (user == null)
@@ -40,7 +40,7 @@ namespace kr_avt.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.IDRole = new SelectList(db.Role, "IDRole", "NameRole");
+            ViewBag.RoleName = new SelectList(db.Role, "Name", "Name");
             return View();
         }
 
@@ -51,29 +51,28 @@ namespace kr_avt.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(User user)
         {
-            
             if (ModelState.IsValid)
             {
-                db.User.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    db.User.Add(user);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
             }
 
-            ViewBag.IDRole = new SelectList(db.Role, "Role", user.RoleName);
+            ViewBag.RoleName = new SelectList(db.Role, "Name", "Name", user.RoleName);
             return View(user);
         }
 
         //
         // GET: /User/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(string id = null)
         {
             User user = db.User.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.IDRole = new SelectList(db.Role, "NameRole", user.RoleName);
+            ViewBag.RoleName = new SelectList(db.Role, "Name", "Name", user.RoleName);
             return View(user);
         }
 
@@ -90,14 +89,14 @@ namespace kr_avt.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IDRole = new SelectList(db.Role, "NameRole", user.RoleName);
+            ViewBag.RoleName = new SelectList(db.Role, "Name", "Name", user.RoleName);
             return View(user);
         }
 
         //
         // GET: /User/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(string id = null)
         {
             User user = db.User.Find(id);
             if (user == null)
@@ -112,7 +111,7 @@ namespace kr_avt.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             User user = db.User.Find(id);
             db.User.Remove(user);

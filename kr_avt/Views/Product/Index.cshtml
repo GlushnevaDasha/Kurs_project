@@ -4,24 +4,25 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Каталог изделий</h2>
+<h2>Изделия</h2>
 
-@if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
-{
 <p>
-    @Html.ActionLink("Create New", "Create")
-</p>}
+    @Html.ActionLink("Добавить новое изделие", "Create")
+</p>
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @*@Html.DisplayNameFor(model => model.Name)*@
+            <h4>Название</h4>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            @*@Html.DisplayNameFor(model => model.Price)*@
+            <h4>Цена</h4>
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>*@
+        <th>
+            <h4>Описание</h4>
+            @*@Html.DisplayNameFor(model => model.Description)*@
+        </th>
         <th></th>
     </tr>
 
@@ -33,17 +34,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>*@
         <td>
-@if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
-{
-            @Html.ActionLink("Edit", "Edit", new {  id=item.Name })
-            
-            @Html.ActionLink("Delete", "Delete", new { id = item.Name })
-}
-@Html.ActionLink("Details", "Details", new { id = item.Name }) 
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "Edit", new {  id=item.Name }) |
+            @Html.ActionLink("Удалить", "Delete", new {  id=item.Name })
         </td>
     </tr>
 }

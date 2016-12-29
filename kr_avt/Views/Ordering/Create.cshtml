@@ -4,33 +4,18 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Создать</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Ordering</legend>
+        <legend>Заказ</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Date)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Date)
-            @Html.ValidationMessageFor(model => model.Date)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Client, "User")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("Client", String.Empty)
-            @Html.ValidationMessageFor(model => model.Client)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductName, "Product")
+            @*@Html.LabelFor(model => model.ProductName, "Product")*@
+            <h4>Изделие</h4>
         </div>
         <div class="editor-field">
             @Html.DropDownList("ProductName", String.Empty)
@@ -38,37 +23,22 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ActionId, "Sale")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("ActionId", String.Empty)
-            @Html.ValidationMessageFor(model => model.ActionId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Number)
+            @*@Html.LabelFor(model => model.Number)*@
+            <h4>Количество</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Number)
             @Html.ValidationMessageFor(model => model.Number)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Status)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Status)
-            @Html.ValidationMessageFor(model => model.Status)
-        </div>
-
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Заказать" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться назад", "Index")
 </div>
 
 @section Scripts {

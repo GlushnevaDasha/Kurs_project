@@ -18,6 +18,12 @@ namespace kr_avt
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "HomePage", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+               name: "Pay",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Ordering", action = "Pay", id = UrlParameter.Optional }
+           );
         }
     }
 }

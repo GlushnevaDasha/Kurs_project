@@ -12,39 +12,19 @@
 
     <fieldset>
         <legend>Пользователь</legend>
-
-       <div class="editor-label">
-            @Html.LabelFor(model => model.Id)
+        
+     <div class="editor-label">
+            @*@Html.LabelFor(model => model.RoleName, "Role")*@
+            <h4>Роль в системе</h4>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Id)
-            @Html.ValidationMessageFor(model => model.Id)
+            @Html.DropDownList("RoleName", String.Empty)
+            @Html.ValidationMessageFor(model => model.RoleName)
         </div>
-@if (MyRoleProvider.Role(User.Identity.Name, "Администратор"))
-{
+   
         <div class="editor-label">
-            @Html.LabelFor(model => model.Role.Name, "Role")
-        </div>
-        <div class="editor-field">
-            @*@Html.DropDownList("IDRole", String.Empty)*@
-            @Html.EditorFor(model => model.Role)
-            @Html.ValidationMessageFor(model => model.Role.Name)
-        </div>
-}
-
- @if (MyRoleProvider.Role(User.Identity.Name, ""))
-{
-    <div class="editor-label">
-        @Html.LabelFor(model => model.Role.Name, "Role")
-    </div>
-             
-        <div class="editor-field">
-            @Html.DropDownList("IDRole", "Клиент")
-            @Html.ValidationMessageFor(model => model.Role.Name)
-        </div>
-} 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Surname)
+            @*@Html.LabelFor(model => model.Surname)*@
+            <h4>Фамилия</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Surname)
@@ -52,7 +32,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            @*@Html.LabelFor(model => model.Name)*@
+            <h4>Имя</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
@@ -60,15 +41,17 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.PassportData)
+            @*@Html.LabelFor(model => model.PassportData)*@
+            <h4>Паспортные данные</h4>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.PassportData)
+            @Html.TextBoxFor(model => model.PassportData, new { style = "width: 500px; height: 100px" })
             @Html.ValidationMessageFor(model => model.PassportData)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Email)
+            @*@Html.LabelFor(model => model.Email)*@
+            <h4>Email</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Email)
@@ -76,7 +59,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Login)
+            @*@Html.LabelFor(model => model.Login)*@
+            <h4>Логин</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Login)
@@ -84,7 +68,8 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Password)
+            @*@Html.LabelFor(model => model.Password)*@
+            <h4>Пароль</h4>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Password)
@@ -92,13 +77,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Зарегистрироваться" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Вернуться", "Index")
+    @Html.ActionLink("Вернуться назад", "Index")
 </div>
 
 @section Scripts {
